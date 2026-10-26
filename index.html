@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chris Giamarino · Urban & Regional Planning</title>
+
+    <!-- Stratos Adobe Font Kit -->
+    <link rel="stylesheet" href="https://use.typekit.net/xmn0yeq.css">
+
+    <style>
+         :root {
+            --grey-900: #252525;
+            --grey-800: #525252;
+            --grey-700: #636363;
+            --grey-600: #737373;
+            --grey-500: #969696;
+            --grey-400: #bdbdbd;
+            --grey-300: #cccccc;
+            --grey-200: #e0e0e0;
+            --grey-100: #f7f7f7;
+            --grey-000: #ffffff;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: var(--grey-100);
+            color: var(--grey-900);
+            font-family: "stratos", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+        
+        .page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        /* Hero Banner with img/background.svg */
+        
+        .hero-banner {
+            width: 100%;
+            height: clamp(180px, 25vh, 280px);
+            background-color: var(--grey-300);
+            background-image: url('img/background.svg');
+            background-size: cover;
+            background-position: center;
+            border-bottom: 1px solid var(--grey-300);
+        }
+        
+        header {
+            padding: 1.25rem clamp(1.25rem, 6vw, 5.5rem);
+            border-bottom: 1px solid var(--grey-200);
+            background: var(--grey-000);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .site-title {
+            color: var(--grey-900);
+            font-size: .88rem;
+            font-weight: 600;
+            letter-spacing: .13em;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+        
+        nav {
+            display: flex;
+            gap: .5rem;
+            flex-wrap: wrap;
+        }
+        
+        nav a {
+            color: var(--grey-800);
+            text-decoration: none;
+            font-size: .85rem;
+            font-weight: 600;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            padding: .4rem .8rem;
+            border-radius: 6px;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+        
+        nav a:hover {
+            background: var(--grey-200);
+            color: var(--grey-900);
+        }
+        
+        main {
+            flex: 1;
+            width: min(1080px, 100%);
+            margin: auto;
+            padding: 0 clamp(1.5rem, 5vw, 4rem) clamp(3.5rem, 7vh, 6rem);
+        }
+        /* Profile Header with Headshot Overlap */
+        
+        .profile-container {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: clamp(2rem, 5vw, 4rem);
+            align-items: start;
+            margin-top: -80px;
+        }
+        
+        .headshot-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 280px;
+            aspect-ratio: 1;
+            border-radius: 12px;
+            overflow: hidden;
+            background: var(--grey-200);
+            border: 4px solid var(--grey-000);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        }
+        
+        .headshot {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .profile-header {
+            padding-top: 90px;
+        }
+        
+        .eyebrow {
+            margin: 0 0 0.5rem;
+            color: var(--grey-600);
+            font-size: .78rem;
+            font-weight: 600;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+        }
+        
+        h1 {
+            margin: 0 0 0.75rem;
+            color: var(--grey-900);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 600;
+            line-height: 1.02;
+            letter-spacing: -.02em;
+        }
+        
+        .subtitle {
+            font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+            color: var(--grey-700);
+            font-weight: 400;
+            margin: 0 0 1.75rem;
+            line-height: 1.4;
+        }
+        
+        .bio {
+            color: var(--grey-800);
+            font-size: clamp(1.02rem, 1.5vw, 1.15rem);
+            line-height: 1.75;
+            margin-bottom: 2rem;
+        }
+        
+        .bio a,
+        .text-link {
+            color: var(--grey-900);
+            font-weight: 600;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            transition: color 0.2s ease;
+        }
+        
+        .bio a:hover,
+        .text-link:hover {
+            color: var(--grey-600);
+        }
+        /* Action Buttons */
+        
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.85rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.4rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-primary {
+            background: var(--grey-900);
+            color: var(--grey-000);
+            border: 1px solid var(--grey-900);
+        }
+        
+        .btn-primary:hover {
+            background: var(--grey-800);
+            border-color: var(--grey-800);
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: var(--grey-000);
+            color: var(--grey-900);
+            border: 1px solid var(--grey-300);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--grey-200);
+            border-color: var(--grey-400);
+        }
+        
+        .btn-sm {
+            padding: 0.5rem 0.95rem;
+            font-size: 0.82rem;
+            margin-top: 0.75rem;
+        }
+        /* Social Links Section */
+        
+        .social-links {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--grey-200);
+            flex-wrap: wrap;
+        }
+        
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--grey-700);
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 600;
+            padding: 0.55rem 1rem;
+            border-radius: 6px;
+            background: var(--grey-000);
+            border: 1px solid var(--grey-200);
+            transition: all 0.2s ease;
+        }
+        
+        .social-btn:hover {
+            color: var(--grey-900);
+            background: var(--grey-200);
+            border-color: var(--grey-300);
+        }
+        
+        .social-icon {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+        /* Public Scholarship Section */
+        
+        .scholarship-section {
+            margin-top: 3.5rem;
+            padding-top: 2.5rem;
+            border-top: 1px solid var(--grey-300);
+        }
+        
+        .scholarship-section h2 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--grey-900);
+            margin: 0 0 1.5rem 0;
+            letter-spacing: -0.01em;
+        }
+        
+        .scholarship-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .scholarship-card {
+            background: var(--grey-000);
+            border: 1px solid var(--grey-200);
+            border-radius: 10px;
+            padding: 1.75rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        
+        .scholarship-card:hover {
+            border-color: var(--grey-400);
+        }
+        
+        .scholarship-meta {
+            font-size: 0.78rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--grey-600);
+            margin-bottom: 0.4rem;
+        }
+        
+        .scholarship-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 0 0 0.5rem 0;
+            line-height: 1.3;
+        }
+        
+        .scholarship-title a {
+            color: var(--grey-900);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        
+        .scholarship-title a:hover {
+            color: var(--grey-600);
+        }
+        
+        .citation-text {
+            font-size: 0.95rem;
+            color: var(--grey-700);
+            margin: 0 0 0.85rem 0;
+            line-height: 1.5;
+        }
+        
+        .scholarship-description {
+            color: var(--grey-800);
+            font-size: 0.98rem;
+            line-height: 1.65;
+            margin: 0 0 0.75rem 0;
+        }
+        
+        footer {
+            padding: 1.25rem clamp(1.25rem, 6vw, 5.5rem);
+            border-top: 1px solid var(--grey-200);
+            background: var(--grey-000);
+            color: var(--grey-600);
+            font-size: .78rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        footer a {
+            color: var(--grey-700);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        footer a:hover {
+            color: var(--grey-900);
+        }
+        
+        @media (max-width: 768px) {
+            .profile-container {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                margin-top: -60px;
+            }
+            .headshot-wrapper {
+                max-width: 200px;
+            }
+            .profile-header {
+                padding-top: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <header>
+            <a href="index.html" class="site-title">Chris Giamarino</a>
+            <nav>
+                <a href="#public-scholarship">Public Scholarship</a>
+                <a href="https://cgiamarino9.github.io/PomonaSpatialJusticeCollaborative" target="_blank" rel="noopener">PSJC Collaborative</a>
+                <a href="https://www.cpp.edu/faculty/cdgiamarino/index.shtml" target="_blank" rel="noopener">Faculty Page</a>
+                <a href="https://livecsupomona-my.sharepoint.com/:w:/g/personal/cdgiamarino_cpp_edu/IQBKEOfdEc91SIQ_RfFlQ9S5AQmRLTCw60fab0oh7SaJR0E?e=anZrI0" target="_blank" rel="noopener">CV</a>
+                <a href="https://scholar.google.com/citations?user=JFjdQ94AAAAJ&hl=en" target="_blank" rel="noopener">Scholar</a>
+            </nav>
+        </header>
+
+        <div class="hero-banner" role="img" aria-label="Header Background Image"></div>
+
+        <main>
+            <div class="profile-container">
+                <div class="headshot-wrapper">
+                    <img class="headshot" src="img/headshot.svg" alt="Chris Giamarino Headshot">
+                </div>
+
+                <div class="profile-header">
+                    <p class="eyebrow">Cal Poly Pomona</p>
+                    <h1>Chris Giamarino</h1>
+                    <p class="subtitle">Assistant Professor of Urban and Regional Planning</p>
+
+                    <p class="bio">
+                        Chris Giamarino is an Assistant Professor of Urban and Regional Planning at Cal Poly Pomona and Director of the <a href="https://cgiamarino9.github.io/PomonaSpatialJusticeCollaborative" target="_blank" rel="noopener">Pomona Spatial Justice Collaborative</a>.
+                        His research connects social justice, urban design, skateboarding politics, and unhoused rights to the city, appearing in the <em>Journal of the American Planning Association</em>, <em>Housing Policy Debate</em>, <em>Cities &amp; Health</em>,
+                        <em>Leisure Studies</em>, and <em>The New York Times</em>. A lifelong skateboarder and public space advocate, he collaborates with The Skatepark Project and Services not Sweeps coalition, exploring grassroots architectural interventions
+                        that challenge hostile designs and reimagine them through inclusive public space policies. He is working on his first book, <em>City of Courts and Camps: Excavating Polluted Futures in Los Angeles</em>, with Verso Books, which
+                        critiques neoliberal containment ahead of the 2028 Olympics, envisioning just public futures through the DIY urban design tactics of skateboarder and encampment communities in grey spaces across LA.
+                    </p>
+
+                    <div class="actions">
+                        <a href="https://cgiamarino9.github.io/PomonaSpatialJusticeCollaborative" target="_blank" rel="noopener" class="btn btn-primary">
+                            PSJC Collaborative ↗
+                        </a>
+                        <a href="https://www.cpp.edu/faculty/cdgiamarino/index.shtml" target="_blank" rel="noopener" class="btn btn-secondary">
+                            CPP Faculty Profile ↗
+                        </a>
+                        <a href="https://livecsupomona-my.sharepoint.com/:w:/g/personal/cdgiamarino_cpp_edu/IQBKEOfdEc91SIQ_RfFlQ9S5AQmRLTCw60fab0oh7SaJR0E?e=anZrI0" target="_blank" rel="noopener" class="btn btn-secondary">
+                            Working CV ↗
+                        </a>
+                        <a href="https://scholar.google.com/citations?user=JFjdQ94AAAAJ&hl=en" target="_blank" rel="noopener" class="btn btn-secondary">
+                            Google Scholar ↗
+                        </a>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/chris_guymariano/" target="_blank" rel="noopener" class="social-btn">
+                            <svg class="social-icon" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg> Instagram
+                        </a>
+                        <a href="https://bsky.app/profile/chrisguymariano.bsky.social" target="_blank" rel="noopener" class="social-btn">
+                            <svg class="social-icon" viewBox="0 0 568 501">
+                                <path d="M123.121 33.664C187.24 81.381 251.639 171.02 284 225.267c32.361-54.247 96.76-143.886 160.879-191.603C491.087 1.487 556.7-16.55 556.7 49.336c0 13.155-7.537 110.372-11.957 126.158-15.358 54.838-71.18 68.835-121.21 60.32 87.522 14.887 109.529 64.218 61.503 113.51-91.319 93.72-171.748-23.498-201.036-81.567-29.288 58.069-109.717 175.287-201.036 81.567-48.026-49.292-26.019-98.623 61.503-113.51-50.03 8.515-105.852-5.482-121.21-60.32C18.837 160.1 11.3 62.49 11.3 49.336c0-65.886 65.613-47.849 111.821-15.672z"/>
+                            </svg> Bluesky
+                        </a>
+                        <a href="https://www.linkedin.com/in/chris-giamarino-936151271/" target="_blank" rel="noopener" class="social-btn">
+                            <svg class="social-icon" viewBox="0 0 24 24">
+                                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.72a1.63 1.63 0 1 0 0 3.26 1.63 1.63 0 0 0 0-3.26z"/>
+                            </svg> LinkedIn
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Public Scholarship Section -->
+            <section id="public-scholarship" class="scholarship-section">
+                <h2>Public Scholarship</h2>
+
+                <div class="scholarship-grid">
+
+                    <!-- NYT Feature -->
+                    <article class="scholarship-card">
+                        <div class="scholarship-meta">Op-Ed &amp; Interactive Essay · The New York Times</div>
+                        <h3 class="scholarship-title">
+                            <a href="https://www.nytimes.com/interactive/2024/02/21/opinion/homelessness-crisis-america-stories.html" target="_blank" rel="noopener">
+                                Opinion | A Car is Not a Home
+                            </a>
+                        </h3>
+                        <p class="citation-text">
+                            Giamarino, C. (2024, February 21). Opinion | A Car is Not a Home. <em>The New York Times</em>. <a href="https://www.nytimes.com/interactive/2024/02/21/opinion/homelessness-crisis-america-stories.html" target="_blank" rel="noopener"
+                                class="text-link">https://www.nytimes.com/interactive/2024/02/21/opinion/homelessness-crisis-america-stories.html</a>
+                        </p>
+                        <p class="scholarship-description">
+                            When Americans lose their housing, their cars are often the first place they turn. The federal government doesn’t collect data specifically on vehicular homelessness, but recent studies show that over 40 percent of unsheltered people in Los Angeles County
+                            live in their vehicles — cars, vans, campers and R.V.s. The cold reality: Finding a safe place to park is a challenge, made worse by a web of complicated ordinances that in much of the country make sleeping and living in your
+                            car illegal, with towing and expensive tickets a constant worry. The Los Angeles area is home to the nation’s largest population of “vehicle dwellers.” One nonprofit, Safe Parking L.A., has set up in parking lots across Los
+                            Angeles in response, allowing people to stay in their cars during the night when businesses are closed, providing amenities like restrooms, security guards and sometimes even financial services and opportunities to find shelters
+                            and housing.
+                        </p>
+                        <a href="https://www.nytimes.com/interactive/2024/02/21/opinion/homelessness-crisis-america-stories.html" target="_blank" rel="noopener" class="btn btn-secondary btn-sm">
+                            Read on The New York Times ↗
+                        </a>
+                    </article>
+
+                    <!-- Friends In Deed Podcast -->
+                    <article class="scholarship-card">
+                        <div class="scholarship-meta">Podcast Interview · Friends In Deed</div>
+                        <h3 class="scholarship-title">
+                            <a href="https://podcasts.apple.com/us/podcast/2026-5-vehicular-homeless-conversation-with-professor/id1600358197?i=1000770658908" target="_blank" rel="noopener">
+                                Vehicular Homelessness — Conversation with Professor Chris Giamarino
+                            </a>
+                        </h3>
+                        <p class="scholarship-description">
+                            A podcast conversation hosted by <a href="https://friendsindeedpas.org/" target="_blank" rel="noopener" class="text-link">Friends In Deed</a> examining vehicular homelessness, safe parking programs, unhoused rights, and the
+                            municipal regulatory landscape affecting vehicle dwellers in Southern California.
+                        </p>
+
+                        <div class="actions" style="margin-bottom: 0;">
+                            <a href="https://open.spotify.com/episode/4AKKZ389MdvtPDEhAZ1IIQ" target="_blank" rel="noopener" class="btn btn-secondary btn-sm">
+                                Listen on Spotify ↗
+                            </a>
+                            <a href="https://podcasts.apple.com/us/podcast/2026-5-vehicular-homeless-conversation-with-professor/id1600358197?i=1000770658908" target="_blank" rel="noopener" class="btn btn-secondary btn-sm">
+                                Listen on Apple Podcasts ↗
+                            </a>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <span>Chris Giamarino · Cal Poly Pomona</span>
+            <a href="https://www.cpp.edu/faculty/cdgiamarino/index.shtml" target="_blank" rel="noopener">Department of Urban &amp; Regional Planning</a>
+        </footer>
+    </div>
+</body>
+
+</html>
